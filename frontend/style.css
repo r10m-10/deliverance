@@ -52,7 +52,7 @@ body {
 }
 
 .hero-content {
-  padding: 120px 120px;
+  padding: 120px 120px 0px;
   max-width: 55%;
   font-size: 60px;
   font-family: var(--font-main);
@@ -60,16 +60,33 @@ body {
 }
 
 .hero-content > h1{
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .hero-content > p{
   font-size: 26px;
   color: var(--text-secondary);
   margin-top: 0px;
+  margin-bottom: 0px;
   font-family: var(--font-text3);
 }
 
 .hero-content > p > span{
   color: var(--gold);
+}
+
+.hero-actions{
+  padding: 34px 120px;
+}
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 28px;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-family: var(--font-text1);
+  text-decoration: none;
 }
