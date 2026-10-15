@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IM+Fell+English:ital@0;1&family=MedievalSharp&display=swap');
 
 :root {
   --bg: #171A19;
@@ -10,6 +10,10 @@
   --gold-muted: #665033;
 
   --font-main: 'MedievalSharp', sans-serif;
+  --font-text1: 'Cinzel', sans-serif;
+  --font-text2: 'EB Garamond', sans-serif;
+  --font-text3: 'IM Fell English', sans-serif;
+
 }
 
 * {
@@ -50,12 +54,22 @@ body {
 .hero-content {
   padding: 120px 120px;
   max-width: 55%;
-  font-size: 54px;
+  font-size: 60px;
   font-family: var(--font-main);
   color: var(--text-primary);
 }
 
+.hero-content > h1{
+  margin-bottom: 10px;
+}
+
 .hero-content > p{
-  font-size: 38px;
+  font-size: 26px;
   color: var(--text-secondary);
+  margin-top: 0px;
+  font-family: var(--font-text3);
+}
+
+.hero-content > p > span{
+  color: var(--gold);
 }
