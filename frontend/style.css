@@ -76,7 +76,10 @@ body {
 }
 
 .hero-actions{
-  padding: 38px 120px;
+  padding: 56px 120px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
 }
 
 .btn{
