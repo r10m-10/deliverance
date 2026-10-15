@@ -124,3 +124,9 @@ body {
   border-color: var(--gold);
   box-shadow: none;
 }
+
+.btn-secondary:hover {
+  background: rgba(173, 135, 72, 0.12);
+  box-shadow: none;
+}
+
