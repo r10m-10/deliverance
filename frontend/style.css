@@ -128,8 +128,35 @@ body {
   box-shadow: none;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover{
   background: rgba(173, 135, 72, 0.12);
   box-shadow: none;
 }
 
+.learn-more{
+  min-height: 100vh;
+  padding: 50px 8%;
+  background: var(--bg);
+}
+
+.section-heading{
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-label{
+  text-transform: uppercase;
+  color: var(--gold);
+  font-size: 84px;
+  letter-spacing: 4px;
+  font-family: var(--font-text3);
+}
+
+.section-heading p{
+  margin-top: 10px;
+  font-size: 16px;
+  font-family: var(--font-main);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
