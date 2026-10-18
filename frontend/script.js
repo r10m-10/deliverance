@@ -38,10 +38,35 @@
   Object.keys(spyMap).forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
   spy.observe(document.querySelector('.hero'));
 
-  /* Golden footprints follow the cursor, then fade. Paused over boxes and buttons so their glow takes over. */
+  /* Castle zone: the hero artwork is hero.png (1672x941) shown with background-size: cover.
+     ZONES are rectangles over the castle, town and hills in image pixels: [x0, y0, x1, y1]. */
+  const hero = document.querySelector('.hero');
+  const IMG_W = 1672, IMG_H = 941;
+  const ZONES = [[1140, 300, 1672, 560], [920, 560, 1672, 880], [440, 570, 1100, 800]];
+  const castleAt = (cx, cy) => {
+    const r = hero.getBoundingClientRect();
+    if (cy < r.top || cy > r.bottom) return null;
+    const s = Math.max(r.width / IMG_W, r.height / IMG_H);
+    const px = cx - r.left, py = cy - r.top;
+    const ix = (px - (r.width - IMG_W * s) / 2) / s, iy = (py - (r.height - IMG_H * s) / 2) / s;
+    return ZONES.some(([x0, y0, x1, y1]) => ix >= x0 && ix <= x1 && iy >= y0 && iy <= y1) ? { x: px, y: py } : null;
+  };
+
+  if (matchMedia('(pointer: fine)').matches) {
+    /* Gold parts of the castle glow around the cursor */
+    addEventListener('pointermove', e => {
+      const hit = castleAt(e.clientX, e.clientY);
+      hero.classList.toggle('castle-hover', !!hit);
+      if (hit) { hero.style.setProperty('--mx', hit.x + 'px'); hero.style.setProperty('--my', hit.y + 'px'); }
+    }, { passive: true });
+    document.addEventListener('mouseleave', () => hero.classList.remove('castle-hover'));
+  }
+
+  /* Golden footprints follow the cursor, then fade. No footprints over the nav, the castle,
+     boxes, buttons or any glowing gold text/ornament. */
   if (!reduce && matchMedia('(pointer: fine)').matches) {
     let lx = null, ly = null, left = false;
-    const SKIP = 'a, button, .panel, .scroll-card';
+    const SKIP = 'a, button, .nav, .panel, .scroll-card, .divider, .flourish, .coin, .section-label, .numeral, .shop-currency, .tentative, .brand, .hero-content p span';
     document.addEventListener('mouseleave', () => { lx = null; });
     addEventListener('pointermove', e => {
       if (e.pointerType !== 'mouse') return;
@@ -49,7 +74,7 @@
       const dx = e.clientX - lx, dy = e.clientY - ly;
       if (Math.hypot(dx, dy) < 48) return;
       lx = e.clientX; ly = e.clientY;
-      if (e.target.closest && e.target.closest(SKIP)) return;
+      if ((e.target.closest && e.target.closest(SKIP)) || castleAt(e.clientX, e.clientY)) return;
       if (document.querySelectorAll('.footprint').length > 40) return;
       left = !left;
       const rad = Math.atan2(dy, dx), side = left ? -9 : 9;
