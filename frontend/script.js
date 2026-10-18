@@ -28,7 +28,7 @@
   $('.nav-links a').forEach(a => a.addEventListener('click', closeMenu));
 
   /* Scrollspy: highlight the link for the chapter in view */
-  const spyMap = { how: 'about', currency: 'about', shops: 'shops', rules: 'rules', invitation: 'invitation', gathering: 'invitation' };
+  const spyMap = { how: 'about', currency: 'currency', shops: 'shops', rules: 'rules', invitation: 'invitation', gathering: 'invitation' };
   const links = new Map($('.nav-links a:not(.btn)').map(a => [a.getAttribute('href').slice(1), a]));
   const spy = new IntersectionObserver(entries => entries.forEach(e => {
     if (!e.isIntersecting) return;
