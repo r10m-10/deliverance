@@ -62,10 +62,27 @@
     document.addEventListener('mouseleave', () => hero.classList.remove('castle-hover'));
   }
 
-  /* Golden footprints follow the cursor, then fade. No footprints over the nav, the castle,
-     boxes, buttons or any glowing gold text/ornament. */
+  /* Golden footprints follow the cursor, then fade, and stay put on the page as it scrolls.
+     They only appear on the background: never over text, the nav, the castle, boxes, buttons or gold ornaments. */
   if (!reduce && matchMedia('(pointer: fine)').matches) {
     let lx = null, ly = null, left = false;
+    const layer = document.createElement('div');   /* spans the whole page so footprints scroll with it */
+    layer.className = 'footprint-layer';
+    document.body.appendChild(layer);
+    /* true when the point sits on (or within 6px of) rendered text */
+    const overText = (x, y) => {
+      for (const el of document.elementsFromPoint(x, y)) {
+        for (const n of el.childNodes) {
+          if (n.nodeType !== 3 || !n.nodeValue.trim()) continue;
+          const r = document.createRange();
+          r.selectNodeContents(n);
+          for (const b of r.getClientRects()) {
+            if (x >= b.left - 6 && x <= b.right + 6 && y >= b.top - 6 && y <= b.bottom + 6) return true;
+          }
+        }
+      }
+      return false;
+    };
     const SKIP = 'a, button, .nav, .panel, .scroll-card, .divider, .flourish, .coin, .section-label, .numeral, .shop-currency, .tentative, .brand, .hero-content p span';
     document.addEventListener('mouseleave', () => { lx = null; });
     addEventListener('pointermove', e => {
@@ -74,16 +91,17 @@
       const dx = e.clientX - lx, dy = e.clientY - ly;
       if (Math.hypot(dx, dy) < 48) return;
       lx = e.clientX; ly = e.clientY;
-      if ((e.target.closest && e.target.closest(SKIP)) || castleAt(e.clientX, e.clientY)) return;
-      if (document.querySelectorAll('.footprint').length > 40) return;
+      if ((e.target.closest && e.target.closest(SKIP)) || castleAt(e.clientX, e.clientY) || overText(e.clientX, e.clientY)) return;
+      if (layer.childElementCount > 40) return;
       left = !left;
       const rad = Math.atan2(dy, dx), side = left ? -9 : 9;
-      const x = e.clientX - Math.sin(rad) * side, y = e.clientY + Math.cos(rad) * side;
+      const x = e.pageX - Math.sin(rad) * side, y = e.pageY + Math.cos(rad) * side;
       const el = document.createElement('div');
       el.className = 'footprint';
       el.style.transform = `translate(${x}px, ${y}px) rotate(${rad * 180 / Math.PI + 90}deg) scaleX(${left ? -1 : 1}) translate(-50%, -50%)`;
       el.addEventListener('animationend', () => el.remove());
-      document.body.appendChild(el);
+      layer.style.height = document.documentElement.scrollHeight + 'px';
+      layer.appendChild(el);
     }, { passive: true });
   }
 
