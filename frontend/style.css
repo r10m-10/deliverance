@@ -49,6 +49,7 @@ body {
   position: relative;
 }
 
+/* Hero artwork, faded out at the bottom so the page texture shows through */
 .hero::before {
   content: "";
   position: absolute;
@@ -165,6 +166,7 @@ body {
     );
 }
 
+/* Gold divider with ornament */
 .divider {
   display: flex;
   align-items: center;
@@ -213,7 +215,7 @@ body {
 }
 
 .chapter { max-width: 1040px; margin: 0 auto 140px; }
-.chapter-head { text-align: center; margin-bottom: 64px; }
+.chapter-head { text-align: center; margin-bottom: 72px; }
 .chapter-head h3 {
   display: flex; align-items: center; justify-content: center; gap: 26px;
   margin: 0;
@@ -248,8 +250,8 @@ body {
   position: relative;
   padding: 40px 32px 34px;
   background: linear-gradient(180deg, rgba(23, 26, 25, 0.6), rgba(16, 19, 18, 0.82));
-  border: 1px solid var(--gold-muted);
-  box-shadow: inset 0 0 0 5px rgba(16, 19, 18, 0.7), inset 0 0 0 6px rgba(121, 90, 50, 0.35);
+  border: 14px solid transparent;
+  border-image: url("./images/frame.svg") 44 / 44px / 0 stretch;
 }
 .panel h4 {
   margin: 0 0 12px;
@@ -268,10 +270,10 @@ body {
 .steps .panel { text-align: center; padding-top: 54px; }
 .steps .panel::before {
   counter-increment: step; content: counter(step);
-  position: absolute; top: -24px; left: 50%; transform: translateX(-50%);
-  width: 48px; height: 48px; display: grid; place-items: center;
-  background: var(--bg-deep); border: 1px solid var(--gold); border-radius: 50%;
-  font-family: var(--font-text1); font-size: 19px; color: var(--gold);
+  position: absolute; top: -44px; left: 50%; transform: translateX(-50%);
+  width: 60px; height: 60px; display: grid; place-items: center;
+  background: url("./images/medallion.svg") center / contain no-repeat;
+  font-family: var(--font-text1); font-size: 20px; color: var(--gold);
 }
 
 /* Scroll cards */
@@ -290,7 +292,7 @@ body {
   transition: transform 260ms ease, filter 260ms ease;
 }
 .scroll-card:hover { transform: translateY(-6px); filter: drop-shadow(0 30px 26px rgba(0, 0, 0, 0.7)); }
-.scroll-rolled { --scroll-image: url("./images/scroll6.png"); --scroll-ratio: 0.735 / 1; --scroll-padding: 20% 14%; }
+.scroll-rolled { --scroll-image: url("./images/scroll3.png"); --scroll-ratio: 0.735 / 1; --scroll-padding: 20% 14%; }
 .scroll-torn { --scroll-image: url("./images/scroll5.png"); --scroll-ratio: 0.703 / 1; --scroll-padding: 18% 13%; }
 .scroll-landscape { --scroll-image: url("./images/scroll.png"); --scroll-ratio: 1.85 / 1; --scroll-padding: 15% 17%; max-width: 900px; margin: 0 auto; }
 
@@ -311,12 +313,12 @@ body {
   font-size: 13px; letter-spacing: 0.08em; color: #6b4a22;
 }
 .coin {
-  width: 60px; height: 60px; margin-bottom: 12px; display: grid; place-items: center;
-  border-radius: 50%; font-family: var(--font-text1); font-weight: 700; font-size: 24px;
-  box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.14), inset 0 0 0 5px rgba(255, 255, 255, 0.35), 0 3px 6px rgba(60, 35, 10, 0.45);
+  width: 76px; height: 76px; margin-bottom: 8px; font-size: 0; color: transparent;
+  background: center / contain no-repeat;
+  filter: drop-shadow(0 3px 3px rgba(50, 30, 10, 0.5));
 }
-.coin-silver { background: radial-gradient(circle at 35% 30%, #f4f1ea, #b9b6ad 55%, #7d7a72); color: #4a4740; }
-.coin-gold { background: radial-gradient(circle at 35% 30%, #f7e2a1, #cfa24c 55%, #8a6320); color: #5a3d10; }
+.coin-silver { background-image: url("./images/coin-silver.svg"); }
+.coin-gold { background-image: url("./images/coin-gold.svg"); }
 
 /* Shops */
 .shops { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
@@ -345,6 +347,19 @@ body {
 .invite-sub { font-family: var(--font-main); font-size: clamp(16px, 2vw, 22px); margin: 6px 0 14px; color: #3a2410; }
 .scroll-landscape .tentative { margin-top: 14px; color: #6b4a22; border-color: #8a6a3a; }
 .cta { text-align: center; margin-top: 56px; }
+
+/* Ornaments */
+.chapter-head::after {
+  content: ""; display: block; height: 30px; max-width: 360px; margin: 26px auto 0;
+  background: url("./images/flourish.svg") center / contain no-repeat;
+}
+.scroll-landscape::after {
+  content: ""; position: absolute; right: 9%; bottom: 7%;
+  width: clamp(70px, 11vw, 120px); aspect-ratio: 1;
+  background: url("./images/seal.svg") center / contain no-repeat;
+  transform: rotate(-8deg);
+  filter: drop-shadow(0 5px 4px rgba(0, 0, 0, 0.5));
+}
 
 .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
 .pillars .panel { text-align: center; }
