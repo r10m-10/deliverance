@@ -38,6 +38,30 @@
   Object.keys(spyMap).forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
   spy.observe(document.querySelector('.hero'));
 
+  /* Golden footprints follow the cursor, then fade. Paused over boxes and buttons so their glow takes over. */
+  if (!reduce && matchMedia('(pointer: fine)').matches) {
+    let lx = null, ly = null, left = false;
+    const SKIP = 'a, button, .panel, .scroll-card';
+    document.addEventListener('mouseleave', () => { lx = null; });
+    addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
+      if (lx === null) { lx = e.clientX; ly = e.clientY; return; }
+      const dx = e.clientX - lx, dy = e.clientY - ly;
+      if (Math.hypot(dx, dy) < 48) return;
+      lx = e.clientX; ly = e.clientY;
+      if (e.target.closest && e.target.closest(SKIP)) return;
+      if (document.querySelectorAll('.footprint').length > 40) return;
+      left = !left;
+      const rad = Math.atan2(dy, dx), side = left ? -9 : 9;
+      const x = e.clientX - Math.sin(rad) * side, y = e.clientY + Math.cos(rad) * side;
+      const el = document.createElement('div');
+      el.className = 'footprint';
+      el.style.transform = `translate(${x}px, ${y}px) rotate(${rad * 180 / Math.PI + 90}deg) scaleX(${left ? -1 : 1}) translate(-50%, -50%)`;
+      el.addEventListener('animationend', () => el.remove());
+      document.body.appendChild(el);
+    }, { passive: true });
+  }
+
   if (reduce) return;
 
   /* Reveal on scroll: panels rise, scrolls unroll, seal stamps, 600 counts up */
