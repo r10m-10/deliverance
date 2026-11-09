@@ -1,158 +1,449 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Deliverance</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <header class="nav" id="top">
-        <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">◈</span>Deliverance</a>
-        <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
-        <nav class="nav-links" id="nav-links" aria-label="Main">
-            <a href="#about">Learn More</a>
-            <a href="#currency">Currency</a>
-            <a href="#shops">Rewards</a>
-            <a href="#rules">Rules</a>
-            <a href="#invitation">Event</a>
-            <a class="btn btn-sm" href="https://rsvp.soon.it/deliverance">Join Now</a>
-        </nav>
-        <div class="nav-progress" aria-hidden="true"></div>
+      <a class="brand" href="#top"
+        ><span class="brand-mark" aria-hidden="true">◈</span>Deliverance</a
+      >
+      <button
+        class="nav-toggle"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="nav-links" aria-label="Main">
+        <a href="#about">How it Works</a>
+        <a href="#currency">Currency</a>
+        <a href="#shops">Rewards</a>
+        <a href="#rules">Rules</a>
+        <a href="#invitation">Event</a>
+        <a href="#journey">Exploration</a>
+
+        <a class="btn btn-sm" href="https://rsvp.soon.it/deliverance"
+          >Join Now</a
+        >
+      </nav>
+      <div class="nav-progress" aria-hidden="true"></div>
     </header>
 
     <main class="landing-page">
-        <section class="hero">
-            <canvas class="embers" id="embers" aria-hidden="true"></canvas>
-            <div class="hero-glow" aria-hidden="true"></div>
-            <div class="hero-content">
-                <h1>Deliverance</h1>
-                <p>Code for <span>60 hours</span> and Fly out on a <span>5 day historical</span> trip to the Kingdom of
-                    <span>Bohemia</span>.
-                </p>
+      <section class="hero">
+        <canvas class="embers" id="embers" aria-hidden="true"></canvas>
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-content">
+          <img
+            class="hero-logo"
+            src="images/hackclub-flag.png"
+            alt="Hack Club"
+          />
+          <h1>Deliverance</h1>
+          <p>
+            Code for <span>60 hours</span> and Fly out on a
+            <span>5 day historical</span> trip to the Kingdom of
+            <span>Bohemia</span>.
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <a href="https://rsvp.soon.it/deliverance" class="btn">Join Now</a>
+          <a href="#about" class="btn btn-secondary">Learn More</a>
+        </div>
+        <a class="scroll-cue" href="#about"
+          >Scroll to explore<span aria-hidden="true"></span
+        ></a>
+      </section>
+
+      <section class="learn-more" id="about">
+        <div class="divider" aria-hidden="true"><span>◈</span></div>
+
+        <div class="section-heading">
+          <span class="section-label">The Archives</span>
+          <p>All you need to know before beginning your journey.</p>
+        </div>
+
+        <div class="chapter" id="how">
+          <header class="chapter-head">
+            <h3>How it works</h3>
+            <p>
+              Pick a project, build it in the open, and ship it to earn your
+              passage.
+            </p>
+            <div class="flourish" aria-hidden="true"></div>
+          </header>
+          <div class="steps">
+            <article class="panel">
+              <h4>Plan</h4>
+              <p>
+                Choose a project of any theme, from a first build to an advanced
+                one.
+              </p>
+            </article>
+            <article class="panel">
+              <h4>Build</h4>
+              <p>
+                Write it as open source and track your hours with Hackatime.
+              </p>
+            </article>
+            <article class="panel">
+              <h4>Ship</h4>
+              <p>
+                Submit your finished project and collect groschen for the time
+                you put in.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="chapter" id="currency">
+          <header class="chapter-head">
+            <h3><span class="numeral">I.</span> The Currency</h3>
+            <p>
+              Two coins circulate in the realm. Which one you earn depends on
+              what you build.
+            </p>
+            <div class="flourish" aria-hidden="true"></div>
+          </header>
+          <div class="scroll-grid">
+            <article class="scroll-card scroll-torn">
+              <span class="coin coin-silver" aria-hidden="true">S</span>
+              <h3>Silver Groschen</h3>
+              <p>
+                The common currency, earned on general-themed projects. Ship
+                open-source work and receive 10 silver groschen for every hour.
+              </p>
+              <span class="scroll-meta">Spend at the General Store</span>
+            </article>
+            <article class="scroll-card scroll-torn">
+              <span class="coin coin-gold" aria-hidden="true">G</span>
+              <h3>Gold Groschen</h3>
+              <p>
+                The rarer coin, earned on medieval-themed projects. Submissions
+                are expected to be high-quality and unique.
+              </p>
+              <span class="scroll-meta">Spend at the Emporium</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="chapter" id="shops">
+          <header class="chapter-head">
+            <h3><span class="numeral">II.</span> The Shops</h3>
+            <p>Spend your groschen in one of two establishments.</p>
+            <div class="flourish" aria-hidden="true"></div>
+          </header>
+          <div class="shops">
+            <article class="panel">
+              <h4>The General Store</h4>
+              <span class="shop-currency">Pay in silver groschen</span>
+              <ul>
+                <li>Stickers</li>
+                <li>Grants</li>
+                <li>Laptops and iPads</li>
+                <li>Other gadgets and goods</li>
+              </ul>
+            </article>
+            <article class="panel">
+              <h4>The Emporium</h4>
+              <span class="shop-currency">Pay in gold groschen</span>
+              <ul>
+                <li>Special medieval-themed merchandise</li>
+                <li>Other high-quality prizes</li>
+              </ul>
+            </article>
+          </div>
+          <p class="fine-print">
+            Listed rewards are planned examples, not guaranteed stock.
+          </p>
+        </div>
+
+        <div class="chapter" id="rules">
+          <header class="chapter-head">
+            <h3><span class="numeral">III.</span> The Rules of the Realm</h3>
+            <div class="flourish" aria-hidden="true"></div>
+          </header>
+          <ol class="panel rules">
+            <li>Every project must be open source.</li>
+            <li>All work must be tracked with Hackatime.</li>
+            <li>AI may be used only for debugging or very minor tasks.</li>
+            <li>
+              Projects from beginner to advanced can earn silver groschen.
+            </li>
+            <li>
+              Gold groschen projects must be medieval-themed, high-quality and
+              unique.
+            </li>
+          </ol>
+        </div>
+
+        <div class="chapter" id="invitation">
+          <header class="chapter-head">
+            <h3><span class="numeral">IV.</span> The Invitation</h3>
+            <p>Earn enough groschen and you are summoned to Bohemia.</p>
+            <div class="flourish" aria-hidden="true"></div>
+          </header>
+          <article class="scroll-card scroll-landscape">
+            <div class="invite-number">600</div>
+            <div class="invite-sub">
+              silver or gold groschen, or 60 hours of work
             </div>
+            <p>May 23-27, 2027, in the Czech Republic.</p>
+            <span class="tentative"
+              >Tentative: dates and logistics may change</span
+            >
+          </article>
+          <div class="cta">
+            <a href="https://rsvp.soon.it/deliverance" class="btn">Join Now</a>
+          </div>
+        </div>
 
-            <div class="hero-actions">
-                <a href="https://rsvp.soon.it/deliverance" class="btn">Join Now</a>
-                <a href="#about" class="btn btn-secondary">Learn More</a>
-            </div>
-            <a class="scroll-cue" href="#about">Scroll to explore<span aria-hidden="true"></span></a>
-        </section>
+        <div class="chapter" id="gathering">
+          <header class="chapter-head">
+            <h3><span class="numeral">V.</span> The Gathering</h3>
+            <p>Five days in person. The plan is still provisional.</p>
+            <div class="flourish" aria-hidden="true"></div>
+          </header>
+          <div class="pillars">
+            <article class="panel">
+              <h4>Hackathon</h4>
+              <p>Build together with everyone who made the journey.</p>
+            </article>
+            <article class="panel">
+              <h4>Historic places</h4>
+              <p>Explore the historical locations of the region.</p>
+            </article>
+            <article class="panel">
+              <h4>Castles and towns</h4>
+              <p>Visit castles and towns across Bohemia.</p>
+            </article>
+          </div>
+          <div class="journey" id="journey">
+            <h4 class="journey-title">The Exploration Route</h4>
+            <p class="journey-note">
+              Days 3 to 6. Schematic map, not to scale. Stops are
+              interchangeable and may change.
+            </p>
 
-        <section class="learn-more" id="about">
-            <div class="divider" aria-hidden="true"><span>◈</span></div>
+            <div class="journey-layout">
+              <div class="journey-map panel">
+                <svg
+                  class="journey-svg"
+                  viewBox="0 0 800 560"
+                  role="img"
+                  aria-label="Map of the exploration route"
+                >
+                  <path
+                    class="river"
+                    d="M290 0 C270 100 330 160 300 230 S250 400 290 560"
+                  />
+                  <text class="river-label" x="236" y="520">Vltava</text>
+                  <g class="compass" transform="translate(740 490)">
+                    <circle r="26" />
+                    <path d="M0 -20 L6 4 L0 0 L-6 4 Z" />
+                    <text y="-34">N</text>
+                  </g>
+                </svg>
+              </div>
 
-            <div class="section-heading">
-                <span class="section-label">The Archives</span>
-                <p>All you need to know before beginning your journey.</p>
-            </div>
-
-            <div class="chapter" id="how">
-                <header class="chapter-head">
-                    <h3>How it works</h3>
-                    <p>Pick a project, build it in the open, and ship it to earn your passage.</p>
-                    <div class="flourish" aria-hidden="true"></div>
-                </header>
-                <div class="steps">
-                    <article class="panel"><h4>Plan</h4><p>Choose a project of any theme, from a first build to an advanced one.</p></article>
-                    <article class="panel"><h4>Build</h4><p>Write it as open source and track your hours with Hackatime.</p></article>
-                    <article class="panel"><h4>Ship</h4><p>Submit your finished project and collect groschen for the time you put in.</p></article>
+              <article class="journey-card panel" aria-live="polite">
+                <div class="journey-img"><img alt="" src="" /></div>
+                <div class="journey-body">
+                  <span class="journey-day"></span>
+                  <h5 class="journey-name"></h5>
+                  <p class="journey-desc"></p>
+                  <span class="tentative journey-flag" hidden
+                    >Planned: subject to change</span
+                  >
+                  <button type="button" class="btn btn-sm journey-next">
+                    Next stop
+                  </button>
                 </div>
+              </article>
             </div>
 
-            <div class="chapter" id="currency">
-                <header class="chapter-head">
-                    <h3><span class="numeral">I.</span> The Currency</h3>
-                    <p>Two coins circulate in the realm. Which one you earn depends on what you build.</p>
-                    <div class="flourish" aria-hidden="true"></div>
-                </header>
-                <div class="scroll-grid">
-                    <article class="scroll-card scroll-torn">
-                        <span class="coin coin-silver" aria-hidden="true">S</span>
-                        <h3>Silver Groschen</h3>
-                        <p>The common currency, earned on general-themed projects. Ship open-source work and receive 10 silver groschen for every hour.</p>
-                        <span class="scroll-meta">Spend at the General Store</span>
-                    </article>
-                    <article class="scroll-card scroll-torn">
-                        <span class="coin coin-gold" aria-hidden="true">G</span>
-                        <h3>Gold Groschen</h3>
-                        <p>The rarer coin, earned on medieval-themed projects. Submissions are expected to be high-quality and unique.</p>
-                        <span class="scroll-meta">Spend at the Emporium</span>
-                    </article>
-                </div>
+            <ol class="journey-stops">
+              <li>
+                <button
+                  type="button"
+                  class="stop"
+                  data-day="Day 3"
+                  data-x="210"
+                  data-y="400"
+                  data-img="images/gathering/skalitz.jpg"
+                >
+                  <span class="stop-day">Day 3</span
+                  ><span class="stop-name">Skalitz</span>
+                  <span class="stop-desc"
+                    >Your exploration begins here. Write your description for
+                    Skalitz.</span
+                  >
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="stop"
+                  data-day="Day 3"
+                  data-x="360"
+                  data-y="340"
+                  data-img="images/gathering/rattay.jpg"
+                >
+                  <span class="stop-day">Day 3</span
+                  ><span class="stop-name">Rattay</span>
+                  <span class="stop-desc"
+                    >Write your description for Rattay.</span
+                  >
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="stop"
+                  data-day="Day 3"
+                  data-x="500"
+                  data-y="430"
+                  data-img="images/gathering/sasaumonastery.webp"
+                >
+                  <span class="stop-day">Day 3</span
+                  ><span class="stop-name">Sasau Monastery</span>
+                  <span class="stop-desc"
+                    >Write your description for Talmberg.</span
+                  >
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="stop"
+                  data-day="Day 4"
+                  data-x="600"
+                  data-y="110"
+                  data-img="images/gathering/trosky.jpg"
+                >
+                  <span class="stop-day">Day 4</span
+                  ><span class="stop-name">Trosky Castle</span>
+                  <span class="stop-desc"
+                    >The big day. Write your description for Trosky
+                    Castle.</span
+                  >
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="stop"
+                  data-day="Day 5"
+                  data-x="560"
+                  data-y="250"
+                  data-img="images/gathering/kuttenberg.jpg"
+                >
+                  <span class="stop-day">Day 5</span
+                  ><span class="stop-name">Kutná Hora</span>
+                  <span class="stop-desc"
+                    >Write your description for Kutná Hora (Kuttenberg).</span
+                  >
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="stop"
+                  data-day="Day 6"
+                  data-x="300"
+                  data-y="190"
+                  data-img="images/gathering/prague-castle.jpg"
+                  data-planned="true"
+                >
+                  <span class="stop-day">Day 6</span
+                  ><span class="stop-name">Prague Castle</span>
+                  <span class="stop-desc"
+                    >Write your description for Prague Castle.</span
+                  >
+                </button>
+              </li>
+            </ol>
+            <div class="journey-notes">
+              <p>
+                <strong>Day 3 also covers</strong> villages, castles, towns like
+                Vranik, Rattay, Sasau, Ledetchko, Merhojed, Pribyslavitz, Rovna
+                and more. All these places are near each other and small in size
+                therefore can be travelled to in a day.
+              </p>
+              <p>
+                <strong>Subject to change.</strong> One of these days may be
+                replaced entirely by Prague Castle depending on logistics and
+                capabilities.
+              </p>
             </div>
-
-            <div class="chapter" id="shops">
-                <header class="chapter-head">
-                    <h3><span class="numeral">II.</span> The Shops</h3>
-                    <p>Spend your groschen in one of two establishments.</p>
-                    <div class="flourish" aria-hidden="true"></div>
-                </header>
-                <div class="shops">
-                    <article class="panel">
-                        <h4>The General Store</h4>
-                        <span class="shop-currency">Pay in silver groschen</span>
-                        <ul><li>Stickers</li><li>Grants</li><li>Laptops and iPads</li><li>Other gadgets and goods</li></ul>
-                    </article>
-                    <article class="panel">
-                        <h4>The Emporium</h4>
-                        <span class="shop-currency">Pay in gold groschen</span>
-                        <ul><li>Special medieval-themed merchandise</li><li>Other high-quality prizes</li></ul>
-                    </article>
-                </div>
-                <p class="fine-print">Listed rewards are planned examples, not guaranteed stock.</p>
-            </div>
-
-            <div class="chapter" id="rules">
-                <header class="chapter-head">
-                    <h3><span class="numeral">III.</span> The Rules of the Realm</h3>
-                    <div class="flourish" aria-hidden="true"></div>
-                </header>
-                <ol class="panel rules">
-                    <li>Every project must be open source.</li>
-                    <li>All work must be tracked with Hackatime.</li>
-                    <li>AI may be used only for debugging or very minor tasks.</li>
-                    <li>Projects from beginner to advanced can earn silver groschen.</li>
-                    <li>Gold groschen projects must be medieval-themed, high-quality and unique.</li>
-                </ol>
-            </div>
-
-            <div class="chapter" id="invitation">
-                <header class="chapter-head">
-                    <h3><span class="numeral">IV.</span> The Invitation</h3>
-                    <p>Earn enough groschen and you are summoned to Bohemia.</p>
-                    <div class="flourish" aria-hidden="true"></div>
-                </header>
-                <article class="scroll-card scroll-landscape">
-                    <div class="invite-number">600</div>
-                    <div class="invite-sub">silver or gold groschen, or 60 hours of work</div>
-                    <p>May 23-27, 2027, in the Czech Republic.</p>
-                    <span class="tentative">Tentative: dates and logistics may change</span>
-                </article>
-                <div class="cta"><a href="https://rsvp.soon.it/deliverance" class="btn">Join Now</a></div>
-            </div>
-
-            <div class="chapter" id="gathering">
-                <header class="chapter-head">
-                    <h3><span class="numeral">V.</span> The Gathering</h3>
-                    <p>Five days in person. The plan is still provisional.</p>
-                    <div class="flourish" aria-hidden="true"></div>
-                </header>
-                <div class="pillars">
-                    <article class="panel"><h4>Hackathon</h4><p>Build together with everyone who made the journey.</p></article>
-                    <article class="panel"><h4>Historic places</h4><p>Explore the historical locations of the region.</p></article>
-                    <article class="panel"><h4>Castles and towns</h4><p>Visit castles and towns across Bohemia.</p></article>
-                </div>
-            </div>
-        </section>
+          </div>
+        </div>
+        <div class="chapter" id="faq">
+          <header class="chapter-head">
+            <h3><span class="numeral">VI.</span> The Questions</h3>
+            <p>Answers to what travellers ask most.</p>
+            <div class="flourish" aria-hidden="true"></div>
+          </header>
+          <div class="panel faq">
+            <details>
+              <summary>What is Deliverance?</summary>
+              <p>
+                Deliverance is an online YSWS (You Ship Projects, We Ship Real
+                Prizes) program with a 5 day exploration-hackathon. Work on
+                open-source projects tracked with hackatime to earn groschen to
+                purchase numerous rewards in the General Store and Emporium.
+              </p>
+            </details>
+            <details>
+              <summary>Is this free? Who can come?</summary>
+              <p>
+                Yep! Just ship open source projects to qualify and earn your
+                event ticket!
+              </p>
+            </details>
+            <details>
+              <summary>Who's eligible?</summary>
+              <p>If you're under 18 and still in high school.</p>
+            </details>
+            <details>
+              <summary>Is my flight covered?</summary>
+              <p>
+                We'll cover travel for additional work submitted beyond the base
+                hour requirement and <i>hopefully</i> provide need-based
+                stipends as well.
+              </p>
+            </details>
+            <details>
+              <summary>Wait.. will we ACTUALLY get REAL armour?</summary>
+              <p>
+                If you want! We'll have grants you can spend on some medieval
+                armour websites to get real medieval armour
+              </p>
+            </details>
+            <details>
+              <summary>I need more help!</summary>
+              <p>
+                Join #deliverance in the Hack Club slack and we'll help you!
+                You'll get regular updates and notifications on Deliverance as
+                well!
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="site-footer">Deliverance. Plans are subject to change until confirmed.</footer>
+    <footer class="site-footer">
+      Deliverance. Plans are subject to change until confirmed.
+    </footer>
 
     <script src="script.js" defer></script>
-</body>
-
+  </body>
 </html>
