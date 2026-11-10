@@ -356,3 +356,111 @@
     .addEventListener("click", () => select((current + 1) % stops.length));
   select(0);
 })();
+
+/* Music: autoplay, remembers if the visitor turned it off */
+(() => {
+  const btn = document.querySelector(".music-btn");
+  if (!btn) return;
+
+  const KEY = "deliverance-music";
+  const MAX = 0.35; // volume (0 to 1)
+  const audio = new Audio("audio/medieval.mp3");
+  audio.loop = true;
+  audio.volume = 0;
+
+  const store = {
+    get: () => {
+      try {
+        return localStorage.getItem(KEY);
+      } catch {
+        return null;
+      }
+    },
+    set: (v) => {
+      try {
+        localStorage.setItem(KEY, v);
+      } catch {}
+    },
+  };
+
+  let wanted = store.get() !== "off"; // on by default, off only if the visitor chose it
+  let fade;
+
+  const fadeTo = (v, done) => {
+    clearInterval(fade);
+    fade = setInterval(() => {
+      const d = v - audio.volume;
+      if (Math.abs(d) < 0.03) {
+        audio.volume = v;
+        clearInterval(fade);
+        if (done) done();
+      } else {
+        audio.volume = Math.min(
+          1,
+          Math.max(0, audio.volume + Math.sign(d) * 0.03),
+        );
+      }
+    }, 60);
+  };
+
+  const setUI = (playing) => {
+    btn.classList.toggle("on", playing);
+    btn.setAttribute("aria-pressed", String(playing));
+    btn.setAttribute(
+      "aria-label",
+      playing ? "Turn music off" : "Turn music on",
+    );
+    btn.title = playing ? "Music on" : "Music off";
+  };
+
+  audio.addEventListener("playing", () => setUI(true));
+  audio.addEventListener("pause", () => setUI(false));
+  audio.addEventListener("error", () => setUI(false));
+
+  const start = async () => {
+    try {
+      await audio.play();
+      fadeTo(MAX);
+      return true;
+    } catch {
+      return false; // blocked by the browser until the visitor interacts
+    }
+  };
+
+  const stop = () =>
+    fadeTo(0, () => {
+      if (!wanted) audio.pause();
+    });
+
+  /* first visit: if autoplay is blocked, start on the first interaction */
+  const unlock = (e) => {
+    if (e.target.closest && e.target.closest(".music-btn")) return; // the button handles itself
+    if (!wanted) return cleanup();
+    start().then((ok) => {
+      if (ok) cleanup();
+    });
+  };
+  const events = ["pointerdown", "keydown", "touchend"];
+  const cleanup = () =>
+    events.forEach((ev) => removeEventListener(ev, unlock, true));
+
+  btn.addEventListener("click", async () => {
+    if (!audio.paused && wanted) {
+      wanted = false;
+      store.set("off"); // remembered for next visits
+      stop();
+    } else {
+      wanted = true;
+      store.set("on");
+      cleanup();
+      if (!(await start())) setUI(false);
+    }
+  });
+
+  setUI(false);
+  if (wanted) {
+    start().then((ok) => {
+      if (!ok) events.forEach((ev) => addEventListener(ev, unlock, true));
+    });
+  }
+})();

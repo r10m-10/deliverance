@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/svg+xml" href="images/shield-favicon.png" />
     <title>Deliverance</title>
-  </head>
+  </head
 
   <body>
     <header class="nav" id="top">
@@ -32,6 +33,15 @@
           >Join Now</a
         >
       </nav>
+      <button
+        type="button"
+        class="music-btn"
+        aria-pressed="false"
+        aria-label="Turn music on"
+        title="Music off"
+      >
+        <span class="music-icon" aria-hidden="true">🎶</span>
+      </button>
       <div class="nav-progress" aria-hidden="true"></div>
     </header>
 
@@ -47,7 +57,7 @@
           />
           <h1>Deliverance</h1>
           <p>
-            Code for <span>60 hours</span> and Fly out on a
+            Code for <span>65 hours</span> and Fly out on a
             <span>5 day historical</span> trip to the Kingdom of
             <span>Bohemia</span>.
           </p>
@@ -229,9 +239,9 @@
             <div class="flourish" aria-hidden="true"></div>
           </header>
           <article class="scroll-card scroll-landscape">
-            <div class="invite-number">600</div>
+            <div class="invite-number">650</div>
             <div class="invite-sub">
-              silver or gold groschen, or 60 hours of work
+              silver or gold groschen, or 65 hours of work
             </div>
             <p>May 23-27, 2027, in the Czech Republic.</p>
             <span class="tentative"
@@ -484,8 +494,72 @@
     </main>
 
     <footer class="site-footer">
-      if you see this, invite your friends :) and if a gap year sees this, plz
-      sponsor ;)
+      <div class="footer-inner">
+        <a
+          class="footer-help"
+          href="https://hackclub.com/slack/"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="footer-tag">HELP</span>
+          <span class="footer-help-text"
+            >Stuck? Ask in #deliverance on Slack</span
+          >
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <div class="footer-main">
+          <div class="footer-about">
+            <h4>A project by Hack Club</h4>
+            <p class="footer-love">With love from the Deliverance team.</p>
+            <p>
+              Hack Club is a 501(c)(3) nonprofit and network of 60k+ technical
+              high schoolers. We believe you learn best by building so we're
+              creating a community and providing grants so you can make awesome
+              projects. In the past few years, we've partnered with AMD, NASA
+              and Github Education to run the Stardance Challenge in which
+              100,000 teens from all over the world signed up!
+            </p>
+            <span class="tentative"
+              >Draft: this site is a work in progress</span
+            >
+          </div>
+
+          <nav class="footer-col" aria-label="Deliverance">
+            <h5>Deliverance</h5>
+            <a href="#about">How it works</a>
+            <a href="#shops">Rewards</a>
+            <a href="#rules">Rules</a>
+            <a href="#journey">Exploration</a>
+            <a href="https://rsvp.soon.it/deliverance">Join now</a>
+          </nav>
+
+          <nav class="footer-col" aria-label="Community">
+            <h5>Community</h5>
+            <a href="https://hackclub.com/slack/" target="_blank" rel="noopener"
+              >Slack</a
+            >
+            <a
+              href="https://hackclub.com/conduct/"
+              target="_blank"
+              rel="noopener"
+              >Code of Conduct</a
+            >
+            <a href="https://hackclub.com/" target="_blank" rel="noopener"
+              >Hack Club</a
+            >
+          </nav>
+        </div>
+
+        <div class="footer-bottom">
+          <p>Dates, rewards and plans are subject to change until confirmed.</p>
+          <p>
+            if you see this, invite your friends :) and if a gap year sees this,
+            plz sponsor ;)
+          </p>
+          <!-- <p>Music: Track title by Artist, licence.</p> -->
+        </div>
+      </div>
     </footer>
 
     <script src="script.js" defer></script>
