@@ -5,7 +5,6 @@
   const bar = document.querySelector(".nav-progress");
   const toggle = document.querySelector(".nav-toggle");
 
-  /* Nav: solid state + reading-progress line */
   let ticking = false;
   const onScroll = () => {
     if (ticking) return;
@@ -20,7 +19,6 @@
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* Mobile menu */
   const closeMenu = () => {
     nav.classList.remove("open");
     toggle.setAttribute("aria-expanded", "false");
@@ -30,7 +28,6 @@
   });
   $(".nav-links a").forEach((a) => a.addEventListener("click", closeMenu));
 
-  /* Scrollspy: highlight the link for the chapter in view */
   const spyMap = {
     how: "about",
     currency: "currency",
@@ -61,8 +58,6 @@
   });
   spy.observe(document.querySelector(".hero"));
 
-  /* Castle zone: the hero artwork is hero.png (1672x941) shown with background-size: cover.
-     ZONES are rectangles over the castle, town and hills in image pixels: [x0, y0, x1, y1]. */
   const hero = document.querySelector(".hero");
   const IMG_W = 1672,
     IMG_H = 941;
@@ -87,7 +82,6 @@
   };
 
   if (matchMedia("(pointer: fine)").matches) {
-    /* Gold parts of the castle glow around the cursor */
     addEventListener(
       "pointermove",
       (e) => {
@@ -105,8 +99,6 @@
     );
   }
 
-  /* Golden footprints follow the cursor, then fade, and stay put on the page as it scrolls.
-     They only appear on the background: never over text, the nav, the castle, boxes, buttons or gold ornaments. */
   if (!reduce && matchMedia("(pointer: fine)").matches) {
     let lx = null,
       ly = null,
@@ -114,10 +106,9 @@
     const layer =
       document.createElement(
         "div",
-      ); /* spans the whole page so footprints scroll with it */
+      );
     layer.className = "footprint-layer";
     document.body.appendChild(layer);
-    /* true when the point sits on (or within 6px of) rendered text */
     const overText = (x, y) => {
       for (const el of document.elementsFromPoint(x, y)) {
         for (const n of el.childNodes) {
@@ -181,7 +172,6 @@
 
   if (reduce) return;
 
-  /* Reveal on scroll: panels rise, scrolls unroll, seal stamps, 600 counts up */
   const num = document.querySelector(".invite-number");
   const target = num ? +num.textContent : 0;
   if (num) num.textContent = "0";
@@ -216,7 +206,6 @@
   );
   items.forEach((el) => io.observe(el));
 
-  /* Hero embers: slow golden motes drifting upward */
   const cv = document.getElementById("embers");
   if (!cv) return;
   const ctx = cv.getContext("2d");
@@ -270,7 +259,6 @@
   requestAnimationFrame(draw);
 })();
 
-/* Journey map */
 (() => {
   const root = document.getElementById("journey");
   if (!root) return;
@@ -287,7 +275,6 @@
   const routeLayer = make("g", {}, svg);
   const dotLayer = make("g", {}, svg);
 
-  /* one curved segment per leg: a faint dashed base plus a gold line that draws in */
   const segs = [];
   for (let i = 1; i < pts.length; i++) {
     const [x0, y0] = pts[i - 1],
