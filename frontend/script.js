@@ -34,7 +34,7 @@
     shops: "shops",
     rules: "rules",
     invitation: "invitation",
-    gathering: "invitation",
+    gathering: "gathering",
   };
   const links = new Map(
     $(".nav-links a:not(.btn)").map((a) => [
